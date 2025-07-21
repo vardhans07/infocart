@@ -1,0 +1,47 @@
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+body {
+  background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+  font-family: 'Inter', sans-serif;
+}
+
+/* User greeting animation */
+@keyframes fadePulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+.user-greeting {
+  background: linear-gradient(to right, #ffffff, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadePulse 2s ease-in-out infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.user-greeting:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Button hover animation */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover animation */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
