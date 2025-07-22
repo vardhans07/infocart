@@ -40,6 +40,10 @@ $ docker exec -it my-mongo mongosh
 
 Step 2: ✅ Create the custom "master" role before assigning it
 
+db.users.insertOne({ username: "master", role: "master", password: "India@12345" })
+
+✅ or 
+
 db.createRole({
   role: "master",
   privileges: [
