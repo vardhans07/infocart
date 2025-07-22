@@ -1,0 +1,57 @@
+Add the following to your environment variables (e.g. in your .env file):
+
+RAZORPAY_KEY_ID=dummy_key_id
+RAZORPAY_KEY_SECRET=dummy_key_secret
+
+#Some Codespace templates allow you to run Docker.
+
+#You can run MongoDB with Docker (if supported in your Codespace):
+
+$  docker run -d -p 27017:27017 --name my-mongo mongo:latest
+
+or 
+
+$    docker run -d -p 27017:27017 --name my-mongo mongo:latest
+
+
+ your command:
+
+$  docker exec -it my-mongo mongosh
+
+
+If that still doesn’t work, try:
+
+$ docker exec -it my-mongo /usr/bin/mongosh
+
+
+1. Connect to mongo shell (via Docker):
+
+$  docker exec -it my-mongo mongosh
+
+
+2 .Create the custom role master:
+
+db.createRole({
+  role: "master",
+  privileges: [
+    {
+      resource: { db: "infocart", collection: "" },
+      actions: ["find", "insert", "update", "remove"]
+    }
+  ],
+  roles: [] // No inherited roles
+})
+
+3. Create the user master with the new role:
+
+db.createUser({
+  user: "master",
+  pwd: "supersecret",
+  roles: [
+    { role: "master", db: "infocart" }
+  ]
+})
+
+
+4) updateMasterPassword();
+$  node scripts/updateMasterPassword.js
