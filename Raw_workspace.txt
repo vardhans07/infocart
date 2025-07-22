@@ -29,24 +29,25 @@ $ docker exec -it my-mongo /usr/bin/mongosh
 $  docker exec -it my-mongo mongosh
 
 
-2 .Create the custom role master:
+Step 2: ✅ Create the custom "master" role before assigning it
 
 db.createRole({
   role: "master",
   privileges: [
     {
       resource: { db: "infocart", collection: "" },
-      actions: ["find", "insert", "update", "remove"]
+      actions: [ "find", "insert", "update", "remove" ]
     }
   ],
-  roles: [] // No inherited roles
+  roles: []
 })
 
-3. Create the user master with the new role:
+
+🔸 Step 3: ✅ Now create the user with that role
 
 db.createUser({
   user: "master",
-  pwd: "supersecret",
+  pwd: "India@12345",
   roles: [
     { role: "master", db: "infocart" }
   ]
