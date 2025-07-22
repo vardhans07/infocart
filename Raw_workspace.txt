@@ -5,28 +5,37 @@ RAZORPAY_KEY_SECRET=dummy_key_secret
 
 #Some Codespace templates allow you to run Docker.
 
-#You can run MongoDB with Docker (if supported in your Codespace):
+✅ #You can run MongoDB with Docker (if supported in your Codespace):
 
 $  docker run -d -p 27017:27017 --name my-mongo mongo:latest
 
-or 
+🌐 or 
+
 
 $    docker run -d -p 27017:27017 --name my-mongo mongo:latest
 
 
- your command:
+✅  your command:
 
 $  docker exec -it my-mongo mongosh
 
 
-If that still doesn’t work, try:
+✅ If that still doesn’t work, try:
 
 $ docker exec -it my-mongo /usr/bin/mongosh
 
 
-1. Connect to mongo shell (via Docker):
+✅ 1. Connect to mongo shell (via Docker):
 
 $  docker exec -it my-mongo mongosh
+
+
+✅Restart Your MongoDB Container
+$ docker start my-mongo
+
+or 
+$ docker exec -it my-mongo mongosh
+
 
 
 Step 2: ✅ Create the custom "master" role before assigning it
