@@ -55,3 +55,14 @@ db.createUser({
 
 4) updateMasterPassword();
 $  node scripts/updateMasterPassword.js
+
+
+
+### You can also use the built-in Source Control tab in Codespaces to stage, commit, and push — no terminal needed!
+
+If you’re working on a fork or feature branch like patch_1, make sure you're on the correct branch before pushing:
+
+$  git branch
+$  git checkout patch_1
+
+
