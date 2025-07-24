@@ -240,20 +240,22 @@ app.post("/api/cart", authMiddleware, async (req, res) => {
 });
 
 app.delete("/api/cart/remove", authMiddleware, async (req, res) => {
-    const { productId } = req.body;
-    try {
-        let cart = await Cart.findOne({ userId: req.user.id });
-        if (!cart) {
-            return res.status(404).json({ message: "Cart not found" });
-        }
-        cart.items = cart.items.filter(item => item.productId.toString() !== productId);
-        await cart.save();
-        res.json(cart);
-    } catch (error) {
-        console.error("Remove from cart error:", error);
-        res.status(400).json({ message: "Error removing from cart", error: error.message });
-    }
+   const { productId } = req.body;
+     try {
+      let cart = await Cart.findOne({ userId: req.user.id });
+             if (!cart) {
+           return res.status(404).json({ message: "Cart not found" });
+		    }
+         cart.items = cart.items.filter(item => item.productId.toString() !== productId);
+		    await cart.save();
+		 // Now populate for client
+		 const populatedCart = await Cart.findOne({ userId: req.user.id }).populate("items.productId");
+		  res.json(populatedCart);
+		 } catch (error) {
+		 // ...
+		 }
 });
+
 
 app.get("/api/cart", authMiddleware, async (req, res) => {
     try {
